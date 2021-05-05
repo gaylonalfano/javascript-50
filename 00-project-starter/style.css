@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* center horizontally */
+  align-items: center;
+  /* center vertically. NOTE Must give flexbox a height */
+  justify-content: center;
+  height: 100vh;
+  /* Hide overflow so we no scroll bars */
+  overflow: hidden;
+  margin: 0;
+}
