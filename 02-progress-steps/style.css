@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #f6f7fb;
+  font-family: "Mulish", sans-serif;
+  display: flex;
+  /* center horizontally */
+  align-items: center;
+  /* center vertically. NOTE Must give flexbox a height */
+  justify-content: center;
+  height: 100vh;
+  /* Hide overflow so we no scroll bars */
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  /* space the items evenly in the container */
+  justify-content: space-between;
+  /* position relative so we can position other things inside of it absolute */
+  position: relative;
+  margin-bottom: 1.5em;
+  max-width: 100%;
+  width: 350px;
+}
+
+/* NOTE The progress bar has two lines: one grey and one blue. */
+/* We're going to apply the static grey one BEFORE the element and use transitions */
+/* on the active blue line as progress steps forward. Need to style two different divs */
+/* 1. Let's build the STATIC grey line */
+.progress-container::before {
+  /* Must add content when using ::before */
+  content: "";
+  background-color: var(--line-border-empty);
+  /* position absolute within parent relative */
+  position: absolute;
+  /* center the line vertically */
+  top: 50%;
+  /* start it from the left side */
+  left: 0;
+  /* center the center of the line (otherwise the top of the line is centered vertically) */
+  transform: translateY(-50%);
+  /* give the line some height otherwise cannot see it */
+  height: 4px;
+  /* set to full width since it's static */
+  width: 100%;
+  /* place the line behind the progress circles/numbers */
+  z-index: -1;
+}
+
+/* 2. Let's build the ACTIVE blue line */
+.progress {
+  background-color: var(--line-border-fill);
+  /* position absolute within parent relative */
+  position: absolute;
+  /* center the line vertically */
+  top: 50%;
+  /* start it from the left side */
+  left: 0;
+  /* center the center of the line (otherwise the top of the line is centered vertically) */
+  transform: translateY(-50%);
+  /* give the line some height otherwise cannot see it */
+  height: 4px;
+  /* initial width will be 0 but will get wider as we progress */
+  width: 0%;
+  /* place the line behind the progress circles/numbers */
+  z-index: -1;
+  /* add a slight transition for visual */
+  transition: background-color 0.4s ease;
+}
+
+/* Let's build the circles around each step number */
+.circle {
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  /* center the numbers inside the circles using flex */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* give a border */
+  border: 3px solid var(--line-border-empty);
+  transition: border 0.4s ease;
+}
+
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+/* Now let's style the buttons */
+.btn {
+  background-color: var(--line-border-fill);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px 30px;
+  margin: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.btn:active {
+  /* shrink the button just slighly when clicked */
+  /* gives the pressed down effect */
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
+}
