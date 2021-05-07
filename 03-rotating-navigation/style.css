@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  /* ?? */
+  background-color: #333;
+  color: #222;
+  /* Hide X-axis overflow so no left/right scroll bar*/
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.container {
+  background-color: #fafafa;
+  /* Need to specify rotation origin in top-left corner (default is middle of page) */
+  transform-origin: top left;
+  /* Make rotation smoother */
+  transition: transform 0.3s linear;
+  /* Take up entire viewport */
+  width: 100vw;
+  min-height: 100vh;
+  /* Squeeze content a little */
+  padding: 50px;
+}
+
+/* Rotate entire container a little when it has the show-nav class */
+.container.show-nav {
+  transform: rotate(-20deg);
+}
+
+/* Rotate the close button into view when nav is opened */
+.container.show-nav .circle {
+  /* rotate CC the circle to bring close button into view */
+  transform: rotate(-70deg);
+  transition: transform 0.3s ease;
+}
+
+/* Slide the nav li elements onto page */
+/* NOTE Using + Combinator */
+.container.show-nav + nav li {
+  /* bring to default X position instead of off screen */
+  transform: translateX(0);
+  /* Give a slight transition delay for smoother effect */
+  /* transition-delay: 0.3s; */
+  /* NOTE Or, use calc function within inline CSS var (--order) */
+  transition-delay: calc(var(--order) * 100ms);
+}
+
+/* CIRCLE */
+/* Position the circle container in top left corner */
+.circle-container {
+  position: fixed;
+  /* NOTE We make it look like a quarter of circle by adjusting top,left,height,width */
+  /* move the container off the screen */
+  /* NOTE We can set these to positive values to see the FULL circle */
+  top: -90px;
+  left: -90px;
+}
+
+.circle {
+  background-color: #ff7979;
+  height: 180px;
+  width: 180px;
+  /* make it shaped like a circle */
+  border-radius: 50%;
+  /* position this relative so we can position inner/child buttons absolute */
+  position: relative;
+  /* make this rotate */
+  transition: transform 0.3s linear;
+}
+
+.circle button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* make the height the same as visible circle div */
+  height: 100px;
+  background: transparent;
+  border: 0;
+  font-size: 26px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.circle button:focus {
+  outline: none;
+}
+
+.circle button#open {
+  /* position the button centrally inside the quarter circle */
+  left: 60%;
+  top: 45%;
+}
+
+.circle button#close {
+  /* NOTE This is relative to the TOP of the circle AND the TOP of button height! */
+  top: 60%;
+  /* Give the close button some rotation */
+  transform: rotate(90deg);
+  /* Move this button origin offscreen */
+  transform-origin: top left;
+}
+
+/* NAVIGATION */
+/* NOTE This only shows when the show-nav class is on the main container */
+nav {
+  /* fix this nav to bottom left */
+  position: fixed;
+  bottom: 5%;
+  left: 0;
+  /* bring forward on top */
+  z-index: 100;
+}
+
+nav ul {
+  /* Remove the bullet points */
+  list-style-type: none;
+  padding-left: 30px;
+}
+
+/* Make the nav links angled by adding margin to siblings */
+nav ul li {
+  text-transform: uppercase;
+  color: #ffffff;
+  /* Add some spacing between links */
+  margin: 40px 0;
+  /* Set initial position off screen on left until nav is opened */
+  transform: translateX(-100%);
+  /* Slide the links over smoothly when nav is opened */
+  transition: transform 0.3s ease-in;
+}
+
+/* NOTE Can use + Combinator e.g., li + li + li syntax as well */
+nav ul li:nth-of-type(2) {
+  margin-left: 15px;
+  /* Set initial position even further left */
+  transform: translateX(-150%);
+}
+
+nav ul li:nth-of-type(3) {
+  margin-left: 30px;
+  transform: translateX(-200%);
+}
+
+nav ul li a {
+  /* remove the default blue hyperlink color */
+  color: inherit;
+  /* remove underline from link */
+  text-decoration-line: none;
+  /* give some spacing between link text and icon */
+  margin-left: 10px;
+}
+
+nav ul li i {
+  font-size: 20px;
+}
+
+/* CONTENT */
+.content {
+  /* center everything on the page using margin no matter the screen size */
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+.content img {
+  /* Make image fit within parent rather than overflow */
+  max-width: 100%;
+}
+
+.content h1 {
+  margin: 0;
+}
+
+.content small {
+  color: #555555;
+  font-style: italic;
+}
+
+.content p {
+  color: #333333;
+  line-height: 1.5em;
+}

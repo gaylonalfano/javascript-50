@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Rotation Navigation</title>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Circle menu -->
+      <div class="circle-container">
+        <div class="circle">
+          <button id="close">
+            <i class="fas fa-times"></i>
+          </button>
+          <button id="open">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <h1>Amazing Stuff!</h1>
+        <small>Dumbledore</small>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque,
+          illum doloremque accusamus vitae quam ut incidunt illo optio quibusdam
+          cum sit est nam dolor eveniet temporibus aliquid iure minus laborum.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ex
+          placeat assumenda sint, aliquid dolores magnam cum rerum commodi non
+          ipsam iste, dolorum corrupti! Neque fugit voluptate rerum delectus!
+          Repellat.
+        </p>
+        <h3>My Dogs</h3>
+        <img
+          src="https://images.unsplash.com/photo-1529472119196-cb724127a98e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+          alt="Pack of dogs"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Exercitationem dignissimos aspernatur sed accusamus distinctio laborum
+          ea dolorum. Ut, magni. Corrupti natus vero illum quas dignissimos quo
+          voluptatum numquam ex quia iure adipisci architecto cumque deleniti
+          impedit vel, nostrum eos. Facere, odit ab, maxime recusandae porro
+          earum nesciunt expedita soluta fuga quis provident harum at sequi
+          molestias eaque facilis inventore ducimus repellat, similique
+          architecto voluptates reiciendis. Totam tempora unde consectetur
+          explicabo eveniet atque voluptatum laudantium assumenda.
+        </p>
+      </div>
+    </main>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li style="--order: 1">
+          <i class="fas fa-home"></i><a href="#">Home</a>
+        </li>
+        <li style="--order: 2">
+          <i class="fas fa-user-alt"></i><a href="#">About</a>
+        </li>
+        <li style="--order: 3">
+          <i class="fas fa-envelope"></i><a href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <script src="script.js"></script>
+  </body>
+</html>
